@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova AI · Intelligent Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="noise"></div>
+  </div>
+
+  <!-- ===== FLOATING TOP NAV ===== -->
+  <header class="topnav" id="topnav">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <div class="brand-icon">
+          <svg viewBox="0 0 28 28" fill="none"><path d="M14 2L4 8v12l10 6 10-6V8L14 2z" fill="url(#bg)" opacity=".9"/><path d="M14 8l-5 3v6l5 3 5-3v-6L14 8z" fill="#fff"/><defs><linearGradient id="bg" x1="4" y1="2" x2="24" y2="26" gradientUnits="userSpaceOnUse"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#818cf8"/></linearGradient></defs></svg>
+        </div>
+        <span>Nova<strong>AI</strong></span>
+      </a>
+
+      <nav class="pill-nav" role="navigation">
+        <button class="pill-item active" data-view="home">Home</button>
+        <button class="pill-item" data-view="chat">
+          Chat
+          <span class="dot-badge" id="chatBadge"></span>
+        </button>
+        <button class="pill-item" data-view="dashboard">Dashboard</button>
+        <button class="pill-item" data-view="history">History</button>
+        <button class="pill-item" data-view="settings">Settings</button>
+      </nav>
+
+      <div class="nav-end">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+          <span class="sun">☀︎</span><span class="moon">☾</span>
+        </button>
+        <div class="nav-avatar">AP</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MOBILE BOTTOM DOCK ===== -->
+  <nav class="bottom-dock" aria-label="Mobile navigation">
+    <button class="dock-btn active" data-view="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="dock-btn" data-view="chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Chat</span>
+    </button>
+    <button class="dock-btn" data-view="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="4" rx="1"/><rect x="14" y="10" width="7" height="11" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Dash</span>
+    </button>
+    <button class="dock-btn" data-view="history">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span>History</span>
+    </button>
+    <button class="dock-btn" data-view="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9"/></svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main" id="main">
+
+    <!-- HOME -->
+    <section class="view active" id="view-home">
+      <div class="hero-section">
+        <div class="hero-eyebrow">
+          <span class="badge-glow">✦ AI-Powered Assistant</span>
+        </div>
+        <h1 class="hero-title">
+          Think faster.<br/>
+          <span class="shimmer-text">Work smarter.</span>
+        </h1>
+        <p class="hero-sub">Nova is your intelligent AI companion — ready to answer, create, analyze, and assist 24/7 from one seamless workspace.</p>
+        <div class="hero-btns">
+          <button class="btn-cta" data-view="chat">
+            <span>Start a conversation</span>
+            <svg viewBox="0 0 20 20" fill="currentColor" width="18"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+          <button class="btn-outline" data-view="dashboard">View dashboard</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hstat"><strong>2.8K+</strong><span>Messages handled</span></div>
+          <div class="hstat-divider"></div>
+          <div class="hstat"><strong>96%</strong><span>Satisfaction rate</span></div>
+          <div class="hstat-divider"></div>
+          <div class="hstat"><strong>&lt;1s</strong><span>Avg. response</span></div>
+        </div>
+      </div>
+
+      <!-- Floating preview card -->
+      <div class="preview-float">
+        <div class="pf-header">
+          <div class="pf-dot r"></div><div class="pf-dot y"></div><div class="pf-dot g"></div>
+          <span>Nova — Live Chat</span>
+        </div>
+        <div class="pf-msgs">
+          <div class="pf-msg bot">Hi! Ready to help you today 👋</div>
+          <div class="pf-msg user">Summarize my quarterly report</div>
+          <div class="pf-msg bot">Sure — here are the 3 key highlights…</div>
+          <div class="pf-msg bot typing"><span></span><span></span><span></span></div>
+        </div>
+        <div class="pf-input">
+          <span>Ask anything…</span>
+          <button>↑</button>
+        </div>
+      </div>
+
+      <h2 class="section-label">Capabilities</h2>
+      <div class="caps-grid">
+        <div class="cap-card">
+          <div class="cap-icon">⚡</div>
+          <h3>Instant answers</h3>
+          <p>Get clear, contextual responses in under a second, every time.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">📈</div>
+          <h3>Live analytics</h3>
+          <p>Track usage, response quality, and topic trends on a live dashboard.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🔒</div>
+          <h3>Secure & private</h3>
+          <p>All conversations are encrypted and never used for training.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🎨</div>
+          <h3>Fully customizable</h3>
+          <p>Choose tone, theme, accent color and response speed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAT -->
+    <section class="view" id="view-chat">
+      <div class="chat-shell">
+        <div class="chat-topbar">
+          <div class="chat-identity">
+            <div class="chat-avatar">N</div>
+            <div>
+              <strong>Nova Assistant</strong>
+              <span class="online-dot">● Online</span>
+            </div>
+          </div>
+          <button class="ghost-btn" id="clearChat">Clear</button>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="suggestions" id="suggestions">
+          <button class="chip">Give me productivity tips</button>
+          <button class="chip">Write a short poem</button>
+          <button class="chip">Explain recursion</button>
+          <button class="chip">Plan my day</button>
+        </div>
+
+        <form class="composer" id="composer">
+          <input type="text" id="chatInput" placeholder="Ask Nova anything…" autocomplete="off" />
+          <button type="submit" class="send-btn" aria-label="Send">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section class="view" id="view-dashboard">
+      <div class="dash-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="sub">Your usage & insights at a glance.</p>
+        </div>
+        <select class="glass-select" id="rangeSelect">
+          <option>Last 7 days</option>
+          <option>Last 30 days</option>
+          <option>This year</option>
+        </select>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <span class="kpi-icon">💬</span>
+          <div>
+            <div class="kpi-val" data-count="2847">0</div>
+            <div class="kpi-label">Total messages</div>
+          </div>
+          <span class="kpi-trend up">↑ 12.5%</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">⚡</span>
+          <div>
+            <div class="kpi-val" data-count="1" data-suffix="s">0</div>
+            <div class="kpi-label">Avg. response</div>
+          </div>
+          <span class="kpi-trend up">↑ 8.2%</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">⭐</span>
+          <div>
+            <div class="kpi-val" data-count="96" data-suffix="%">0</div>
+            <div class="kpi-label">Satisfaction</div>
+          </div>
+          <span class="kpi-trend up">↑ 3.1%</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-icon">👥</span>
+          <div>
+            <div class="kpi-val" data-count="48">0</div>
+            <div class="kpi-label">Active sessions</div>
+          </div>
+          <span class="kpi-trend down">↓ 2.4%</span>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="glass-panel wide">
+          <div class="panel-top">
+            <h3>Message volume</h3>
+            <span class="sub">Daily activity</span>
+          </div>
+          <div class="bar-chart" id="barChart"></div>
+        </div>
+        <div class="glass-panel">
+          <div class="panel-top">
+            <h3>Topics</h3>
+            <span class="sub">By category</span>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" id="donut"></div>
+            <ul class="legend" id="donutLegend"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="view" id="view-history">
+      <div class="dash-header">
+        <div>
+          <h1>History</h1>
+          <p class="sub">Your recent conversations.</p>
+        </div>
+      </div>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" width="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4" stroke-linecap="round"/></svg>
+        <input type="text" id="historySearch" placeholder="Search conversations…" />
+      </div>
+      <ul class="history-list" id="historyList"></ul>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings">
+      <div class="dash-header">
+        <div>
+          <h1>Settings</h1>
+          <p class="sub">Customize your Nova experience.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="glass-panel">
+          <h3 class="settings-group-title">Appearance</h3>
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Dark mode</strong>
+              <small>Toggle between light and dark themes.</small>
+            </div>
+            <label class="toggle"><input type="checkbox" id="darkModeSetting" checked /><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Accent color</strong>
+              <small>Choose a primary highlight color.</small>
+            </div>
+            <div class="swatches" id="swatches">
+              <button class="swatch active" data-color="#60a5fa" style="--c:#60a5fa"></button>
+              <button class="swatch" data-color="#818cf8" style="--c:#818cf8"></button>
+              <button class="swatch" data-color="#34d399" style="--c:#34d399"></button>
+              <button class="swatch" data-color="#f472b6" style="--c:#f472b6"></button>
+              <button class="swatch" data-color="#fb923c" style="--c:#fb923c"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel">
+          <h3 class="settings-group-title">Assistant</h3>
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Response tone</strong>
+              <small>How Nova phrases its replies.</small>
+            </div>
+            <select class="glass-select" id="toneSelect">
+              <option>Friendly</option>
+              <option>Professional</option>
+              <option>Concise</option>
+              <option>Playful</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Sound effects</strong>
+              <small>Soft chime on new messages.</small>
+            </div>
+            <label class="toggle"><input type="checkbox" id="soundSetting" checked /><span class="slider"></span></label>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Typing speed</strong>
+              <small>How fast Nova "types" a reply.</small>
+            </div>
+            <input type="range" min="1" max="3" value="2" class="range" id="speedRange" />
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-actions">
+        <button class="btn-cta small" id="saveSettings"><span>Save changes</span></button>
+        <button class="btn-outline small" id="resetSettings">Reset defaults</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
